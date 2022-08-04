@@ -5,4 +5,10 @@ else
     git clone https://github.com/morhetz/gruvbox.git ~/.vim/pack/default/start/gruvbox
 fi
 cp .vimrc ~/.vimrc
-#vim
+cp codeforces.cpp pA.cpp
+cp codeforces.cpp pB.cpp
+cp codeforces.cpp pC.cpp
+cp codeforces.cpp pD.cpp
+cp codeforces.cpp pE.cpp
+cp codeforces.cpp pF.cpp
+vim -p pA.cpp pB.cpp pC.cpp pD.cpp pE.cpp pF.cpp
