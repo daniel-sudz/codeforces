@@ -14,3 +14,4 @@ set smartcase
 set background=dark
 autocmd vimenter * ++nested colorscheme gruvbox
 set number
+set ruler
