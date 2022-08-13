@@ -1,4 +1,4 @@
-#!/bin/bash -exv
+#!/bin/bash -e
 if [ -d "$HOME/.vim/pack/default/start/gruvbox" ]; then
     echo "already loaded gruvbox theme"
 else 

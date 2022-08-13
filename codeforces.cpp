@@ -25,4 +25,5 @@ using namespace std;
 
 int main () {
     fastio
+    cout<<"done"<<endl;
 }
