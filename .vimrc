@@ -21,7 +21,7 @@ autocmd filetype cpp nnoremap <F9> :w <CR> :! bash -c 'clear && bash -c "$CFCOMP
 
 " remap brackets autocomplete
 inoremap { {}<Left>
-inoremap {<CR> {<CR>}<Esc>O
+inoremap {<CR> {<CR>}<Esc>O<tab>
 inoremap {{ {
 inoremap {} {}
 
