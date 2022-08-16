@@ -17,7 +17,7 @@ set number
 set ruler
 
 " compiling
-autocmd filetype cpp nnoremap <F9> :w <CR> :!clear && /usr/local/Cellar/gcc/*/bin/g++-12 -std=c++20 % -o %:r && ./%:r <CR>
+autocmd filetype cpp nnoremap <F9> :w <CR> :! bash -c 'clear && bash -c "$CFCOMPILE % -o %:r" && echo "compiled" && time ./%:r' <CR>
 
 " remap brackets autocomplete
 inoremap { {}<Left>

@@ -1,4 +1,14 @@
 #!/bin/bash -e
+export CFCOMPILE="/usr/local/Cellar/gcc/*/bin/g++-12 -std=c++20 -fsanitize=address,undefined -Wall -Wextra -Wshadow"
+export MallocNanoZone=0 #https://stackoverflow.com/questions/64126942/malloc-nano-zone-abandoned-due-to-inability-to-preallocate-reserved-vm-space
+
+# precompile headers
+echo "precompiling bits/stdc++"
+mkdir -p bits
+cp /usr/local/Cellar/gcc/*/include/c++/12/**/bits/stdc++.h bits
+bash -c "$CFCOMPILE ./bits/stdc++.h"
+echo "bits/stdc++ compiled"
+
 if [ -d "$HOME/.vim/pack/default/start/gruvbox" ]; then
     echo "already loaded gruvbox theme"
 else 
