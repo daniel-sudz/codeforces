@@ -1,6 +1,7 @@
 bits
 *.out
 *.swp
+*.dSYM
 pA.cpp
 pB.cpp
 pC.cpp
