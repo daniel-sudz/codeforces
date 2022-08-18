@@ -12,13 +12,14 @@
 #define vpii vector<pair<int, int>>
 #define vpll vector<pair<ll,ll>>
 #define endl '\n'
-#define fastio ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 #ifdef ONLINE_JUDGE
     # define watch(x) {}
     # define printv(n) {}
+    # define fastio ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 #else
-#define watch(x) {cerr<<(#x)<<" is "<<(x)<<endl;}
-#define printv(n) {for(auto v:n) cerr<<v<<" ";cerr<<endl;}
+    #define watch(x) {cerr<<(#x)<<" is "<<(x)<<endl;}
+    #define printv(n) {for(auto v:n) cerr<<v<<" ";cerr<<endl;}
+    #define fastio // buffering output does not work with debugger as nothing will print 
 #endif
 using namespace std;
 
