@@ -25,8 +25,3 @@ inoremap {<CR> {<CR>}<Esc>O<tab>
 inoremap {{ {
 inoremap {} {}
 
-" debug
-packadd termdebug
-autocmd filetype cpp nnoremap <F8> :w <Bar> :! bash -c "$CFCOMPILE % -o %:r" <Bar> :Termdebug %:r <CR> 
-let g:termdebug_wide=1 " https://stackoverflow.com/questions/58471029/initial-window-split-in-termdebug-vim
-
