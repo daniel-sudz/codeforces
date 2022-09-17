@@ -15,6 +15,7 @@ set background=dark
 autocmd vimenter * ++nested colorscheme gruvbox
 set number
 set ruler
+set nowrap
 
 " compiling
 autocmd filetype cpp nnoremap <F9> :w <Bar> :! bash -c 'clear && bash -c "$CFCOMPILE % -o %:r" && echo "compiled" && time ./%:r' <CR>
