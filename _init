@@ -19,12 +19,12 @@ fi
 cp .vimrc ~/.vimrc
 
 if [ "$1" == "--write" ]; then
-    cp codeforces.cpp pA.cpp
-    cp codeforces.cpp pB.cpp
-    cp codeforces.cpp pC.cpp
-    cp codeforces.cpp pD.cpp
-    cp codeforces.cpp pE.cpp
-    cp codeforces.cpp pF.cpp
+    node codeforces.js > pA.cpp
+    node codeforces.js > pB.cpp
+    node codeforces.js > pC.cpp
+    node codeforces.js > pD.cpp
+    node codeforces.js > pE.cpp
+    node codeforces.js > pF.cpp
 fi
 
 vim -p pA.cpp pB.cpp pC.cpp pD.cpp pE.cpp pF.cpp

@@ -25,3 +25,6 @@ inoremap {<CR> {<CR>}<Esc>O<tab>
 inoremap {{ {
 inoremap {} {}
 
+" sync clipboard with system 
+set clipboard=unnamed
+
