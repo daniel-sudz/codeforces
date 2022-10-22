@@ -1,6 +1,10 @@
 " syntax
 syntax on
 
+" format
+" https://stackoverflow.com/questions/1646850/in-vim-can-i-format-a-whole-file-and-end-with-the-cursor-where-it-started
+map <silent> <C-f> gg=G<C-o><C-o> 
+
 " spacing
 set tabstop=4
 set autoindent
