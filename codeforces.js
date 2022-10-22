@@ -50,6 +50,16 @@ let debug = [
             cerr<<"}";
         }
     `.split("\n").join(";"),
+    String.raw`
+        void __print(deque<auto>& x) {
+            cerr<<"{"; 
+            for(auto& v: x) {
+                __print(v);;
+                if(&v != &x.back()) cerr<<","; 
+            }
+            cerr<<"}";
+        }
+    `.split("\n").join(";"),
     String.raw`template<typename T, typename V> void __print(pair<T, V> &x) {cerr << '{'; __print(x.first); cerr << ','; __print(x.second); cerr << '}';}`,
     String.raw`template<typename T> void __print(T &x) {int f = 0; cerr << '{'; for (auto &i: x) cerr << (f++ ? "," : ""), __print(i); cerr << "}";}`,
     String.raw`void _print() {cerr << "]\n";}`,
