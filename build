@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker build --progress=plain . -t codeforces
+docker run -it -v "$(pwd)":/codeforces --rm --entrypoint /codeforces/entrypoint codeforces

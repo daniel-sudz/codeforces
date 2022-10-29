@@ -16,7 +16,7 @@ set smartcase
 
 " theme
 set background=dark
-autocmd vimenter * ++nested colorscheme gruvbox
+highligh TabLineFill cterm=NONE term=NONE ctermfg=black ctermbg=black
 set number
 set ruler
 set nowrap

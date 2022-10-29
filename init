@@ -1,3 +1,30 @@
-#!/bin/bash
+# !/bin/bash -e
+export CFCOMPILE="/usr/local/Cellar/gcc/*/bin/g++-12 -std=c++20 -g -fsanitize=address,undefined -Wall -Wextra -Wshadow"
+export MallocNanoZone=0 #https://stackoverflow.com/questions/64126942/malloc-nano-zone-abandoned-due-to-inability-to-preallocate-reserved-vm-space
+export PATH="/usr/local/Cellar/gdb/*/bin/gdb:$PATH"
+echo "set startup-with-shell off" > ~/.gdbinit
 
-sudo ./_init "$@"
+# precompile headers
+echo "precompiling bits/stdc++"
+mkdir -p bits
+cp /usr/local/Cellar/gcc/*/include/c++/12/**/bits/stdc++.h bits
+bash -c "$CFCOMPILE ./bits/stdc++.h"
+echo "bits/stdc++ compiled"
+
+if [ -d "$HOME/.vim/pack/default/start/gruvbox" ]; then
+    echo "already loaded gruvbox theme"
+else 
+    git clone https://github.com/morhetz/gruvbox.git ~/.vim/pack/default/start/gruvbox
+fi
+cp .vimrc ~/.vimrc
+
+if [ "$1" == "--write" ]; then
+    node codeforces.js > pA.cpp
+    node codeforces.js > pB.cpp
+    node codeforces.js > pC.cpp
+    node codeforces.js > pD.cpp
+    node codeforces.js > pE.cpp
+    node codeforces.js > pF.cpp
+fi
+
+vim -p pA.cpp pB.cpp pC.cpp pD.cpp pE.cpp pF.cpp
