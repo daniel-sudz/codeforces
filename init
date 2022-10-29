@@ -6,19 +6,24 @@ echo "set startup-with-shell off" > ~/.gdbinit
 
 # precompile headers
 echo "precompiling bits/stdc++"
-g++ $CFCOMPILE `find /usr/include/ | grep stdc++.h`
-echo "bits/stdc++ compiled"
+if [[ ! -z `find /usr/include/ | grep stdc++.h.gch` ]]; then
+    echo "bits/stdc++ already compiled"
+else 
+    g++ $CFCOMPILE `find /usr/include/ | grep stdc++.h`
+    echo "bits/stdc++ compiled"
+fi
 
 # load vimrc
 cp .vimrc ~/.vimrc
 
 if [ "$1" == "--write" ]; then
-    node codeforces.js > pA.cpp
-    node codeforces.js > pB.cpp
-    node codeforces.js > pC.cpp
-    node codeforces.js > pD.cpp
-    node codeforces.js > pE.cpp
-    node codeforces.js > pF.cpp
+    node codeforces.js > src/pA.cpp
+    node codeforces.js > src/pB.cpp
+    node codeforces.js > src/pC.cpp
+    node codeforces.js > src/pD.cpp
+    node codeforces.js > src/pE.cpp
+    node codeforces.js > src/pF.cpp
 fi
 
+cd src
 vim -p pA.cpp pB.cpp pC.cpp pD.cpp pE.cpp pF.cpp
