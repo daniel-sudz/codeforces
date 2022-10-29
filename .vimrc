@@ -22,7 +22,7 @@ set ruler
 set nowrap
 
 " compiling
-autocmd filetype cpp nnoremap <F9> :w <Bar> :! bash -c 'clear && bash -c "$CFCOMPILE % -o %:r" && echo "compiled" && time ./%:r' <CR>
+autocmd filetype cpp nnoremap <F9> :w <Bar> :! clear && /usr/bin/time --format="compiled in \%e seconds" g++ $CFCOMPILE % -o %:r && /usr/bin/time --format="used \%U second of compute" ./%:r <CR>
 
 " remap brackets autocomplete
 inoremap { {}<Left>
