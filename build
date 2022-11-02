@@ -1,4 +1,5 @@
 #!/bin/bash
-
+# load vimrc into host
+cp .vimrc ~/.vimrc
 docker build --progress=plain . -t codeforces
 docker run -it -v "$(pwd)":/codeforces --rm --entrypoint /codeforces/entrypoint codeforces

@@ -24,21 +24,29 @@ let typedefs = {
 }
 
 let debug = [
-    String.raw`void __print(int& x) {cerr << x;}`,
-    String.raw`void __print(long& x) {cerr << x;}`,
-    String.raw`void __print(long long& x) {cerr << x;}`,
-    String.raw`void __print(unsigned& x) {cerr << x;}`,
-    String.raw`void __print(unsigned long& x) {cerr << x;}`,
-    String.raw`void __print(unsigned long long& x) {cerr << x;}`,
-    String.raw`void __print(float& x) {cerr << x;}`,
-    String.raw`void __print(double& x) {cerr << x;}`,
-    String.raw`void __print(long double& x) {cerr << x;}`,
-    String.raw`void __print(char& x) {cerr << '\'' << x << '\'';}`,
-    String.raw`void __print(char *x) {cerr << '\"' << x << '\"';}`,
-    String.raw`void __print(string &x) {cerr << '\"' << x << '\"';}`,
-    String.raw`void __print(bool& x) {cerr << (x ? "true" : "false");}`,
+    String.raw`void __print(const int& x) {cerr << x;}`,
+    String.raw`void __print(const long& x) {cerr << x;}`,
+    String.raw`void __print(const long long& x) {cerr << x;}`,
+    String.raw`void __print(const unsigned& x) {cerr << x;}`,
+    String.raw`void __print(const unsigned long& x) {cerr << x;}`,
+    String.raw`void __print(const unsigned long long& x) {cerr << x;}`,
+    String.raw`void __print(const float& x) {cerr << x;}`,
+    String.raw`void __print(const double& x) {cerr << x;}`,
+    String.raw`void __print(const long double& x) {cerr << x;}`,
+    String.raw`void __print(const char& x) {cerr << '\'' << x << '\'';}`,
+    String.raw`void __print(const char *x) {cerr << '\"' << x << '\"';}`,
+    String.raw`void __print(const string &x) {cerr << '\"' << x << '\"';}`,
+    String.raw`void __print(const bool& x) {cerr << (x ? "true" : "false");}`,
+    // heuristics for an stl container type 
+    String.raw`template<typename T> concept Container = requires(T t) { begin(t); end(t); size(t); }`,
+    // forward declarations for recursive calls 
+    String.raw`void __print(const stack<auto>& s)`,
+    String.raw`void __print(const deque<auto>& x)`,
+    String.raw`void __print(const queue<auto>& q)`,
+    String.raw`void __print(const pair<auto, auto>& p)`,
+    String.raw`template <Container C> void __print(const C& c)`,
     String.raw`
-        void __print(stack<auto>& s) {
+        void __print(const stack<auto>& s) {
             auto c = s; 
             cerr<<"{STACK_TOP  ";
             while(c.size()) {
@@ -51,7 +59,7 @@ let debug = [
         }
     `.split("\n").join(";"),
     String.raw`
-        void __print(deque<auto>& x) {
+        void __print(const deque<auto>& x) {
             cerr<<"{"; 
             for(auto& v: x) {
                 __print(v);;
@@ -60,8 +68,8 @@ let debug = [
             cerr<<"}";
         }
     `.split("\n").join(";"),
-    String.raw`template<typename T, typename V> void __print(pair<T, V> &x) {cerr << '{'; __print(x.first); cerr << ','; __print(x.second); cerr << '}';}`,
-    String.raw`template<typename T> void __print(T &x) {int f = 0; cerr << '{'; for (auto &i: x) cerr << (f++ ? "," : ""), __print(i); cerr << "}";}`,
+    String.raw`void __print(const pair<auto, auto> &x) {cerr << '{'; __print(x.first); cerr << ','; __print(x.second); cerr << '}';}`,
+    String.raw`template <Container C> void __print(const C &x) {int f = 0; cerr << '{'; for (auto &i: x) cerr << (f++ ? "," : ""), __print(i); cerr << "}";}`,
     String.raw`void _print() {cerr << "]\n";}`,
     String.raw`template <typename T, typename... V> void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v...);}`,
 ]

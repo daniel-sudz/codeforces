@@ -5,6 +5,10 @@ syntax on
 " https://stackoverflow.com/questions/1646850/in-vim-can-i-format-a-whole-file-and-end-with-the-cursor-where-it-started
 map <silent> <C-f> gg=G<C-o><C-o> 
 
+" disable swapfile due to docker mount issues
+" https://github.com/moby/moby/issues/15793
+set noswapfile
+
 " spacing
 set tabstop=4
 set autoindent
