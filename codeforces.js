@@ -59,6 +59,19 @@ let debug = [
         }
     `.split("\n").join(";"),
     String.raw`
+        void __print(const queue<auto>& q) {
+            auto c = q;
+            cerr<<"{QUEUE_FONT ";
+            while(c.size()) {
+                auto v=c.front();
+                c.pop();
+                __print(v);
+                cerr<<(c.size()?",":"");
+            }
+            cerr<<"}";
+        }
+    `.split("\n").join(";"),
+    String.raw`
         void __print(const deque<auto>& x) {
             cerr<<"{"; 
             for(auto& v: x) {
