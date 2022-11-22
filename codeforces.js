@@ -18,9 +18,11 @@ let typedefs = {
     "vvi":      "vector<vector<int>>",
     "vvll":     "vector<vector<long long>>",
     "pii":      "pair<int, int>",
-    "pll":      "pair<long, long>",
+    "pll":      "pair<long long, long long>",
     "vpii":     "vector<pair<int, int>>",
-    "vpll":     "vector<pair<long, long>>",
+    "vvpii":    "vector<vector<pair<int, int>>>",
+    "vpll":     "vector<pair<long long, long long>>",
+    "vvpll":    "vector<vector<pair<long long, long long>>>",
 }
 
 let debug = [
