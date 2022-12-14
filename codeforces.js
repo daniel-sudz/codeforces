@@ -89,6 +89,13 @@ let debug = [
     String.raw`template <typename T, typename... V> void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v...);}`,
 ]
 
+let min_max = [
+    String.raw`auto min_many(auto a) {return a;}`,
+    String.raw`auto min_many(auto a, auto b, auto... c) {return min_many(std::min(a,b),c...);}`,
+    String.raw`auto max_many(auto a) {return a;}`,
+    String.raw`auto max_many(auto a, auto b, auto... c) {return max_many(std::max(a,b),c...);}`,
+]
+
 let online_judge = [
     String.raw`#ifdef ONLINE_JUDGE`,
     String.raw`    # define debug(x...)`,
@@ -104,6 +111,7 @@ let prog_header = ""
 prog_header += macro_defines.join("\n") + "\n"
 prog_header += std_header.join(";") + ";"
 prog_header += debug.join(";") + ";"
+prog_header += min_max.join(";") + ";"
 for(const [k,v] of Object.entries(typedefs))
     prog_header += `typedef ${v} ${k};`
 prog_header += "\n" + online_judge.join("\n")
