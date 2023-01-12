@@ -11,6 +11,8 @@ let macro_defines = [
 ]
 
 let typedefs = {
+    "ui":       "unsigned int",
+    "ull":      "unsigned long long",
     "ll":       "long long",
     "vi":       "vector<int>",
     "vb":       "vector<bool>",
