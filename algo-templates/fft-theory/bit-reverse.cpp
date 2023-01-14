@@ -18,10 +18,10 @@ using namespace std;;void __print(const int& x) {cerr << x;};void __print(const 
 void bit_rev(vector<auto>& arr) {
     ui x = 0;
     ui rev = 0;
-    for(int i=0; i<arr.size()/2; i++) {
-        iter_swap(arr.begin() + x, arr.begin() + rev);
+    for(int i=0; i<(int)arr.size()-1; i++) {
+        if(i < rev) iter_swap(arr.begin() + x, arr.begin() + rev);
         ui m = x ^ (x+1);
-        rev ^= m << (bit_width(arr.size()-1) - bit_width(m));
+        rev ^= (m << (bit_width(arr.size()-1) - bit_width(m)));
         x++;
     }
 }
