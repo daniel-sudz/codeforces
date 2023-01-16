@@ -44,19 +44,16 @@ double pi = 3.141592653589793238462643383279;
 template<typename T> void fft(vector<T>& arr, const bool inv = false) {
     while((arr.size()&(arr.size()-1))) arr.pb(T()); // align power of 2
     int N = arr.size(); 
-    //vector<T> w(N);
-    //for(int i=0;i<N;i++) w[i] = exp(T(0.0, (inv?-2.0:2.0)*pi*(double)i/(double)N)); 
+    vector<T> w(N);
+    for(int i=0;i<N;i++) w[i] = exp(T(0.0, (inv?-2.0:2.0)*pi*(double)i/(double)N)); 
     bit_rev(arr); 
     for(int s=1, m=2; m<=N; s++, m*=2) {
-        complex<double> wn = exp(T(0.0, (inv?-2.0:2.0)*pi/(double)m)); 
         for(int k=0; k<N; k+=m) {
-            complex<double> w = 1;
             for(int j=0;j<m/2;j++) {
-                T t = w * arr[k + j + m/2]; 
+                T t = w[j*N/(m)] * arr[k + j + m/2]; 
                 T u = arr[k + j]; 
                 arr[k + j] = (u + t) / (inv?2.0:1.0);
                 arr[k + j + m/2] = (u - t) / (inv?2.0:1.0);
-                w *= wn;
             }
         }
     }
