@@ -91,7 +91,28 @@ f(w^n) = conj(z(w^{-n})) + i * g(w^n)
 f(w^n) = conj(z(w^{-n})) + (z(w^n) - f(w^n))
 ```
 ```math
-f(w^n) = \frac{(conj(z(w^{-n})) + (z(w^n))}{2}
+f(w^n) = \frac{z(w^n) + conj(z(w^{-n})}{2}
+```
+
+## Restoring $g(w^n)$ from $z(w^n)$
+Carry forward statement from last section:
+
+```math
+conj(z(w^{-n})) = f(w^n) - i * g(w^n)
+```
+```math
+i * g(w^n) = f(w^n) - conj(z(w^{-n}))
+```
+```math
+i * g(w^n) = (z(w^{n}) - i*g(w^{n})) - conj(z(w^{-n}))
+```
+```math
+2i * g(w^n) = z(w^{n}) - conj(z(w^{-n}))
+```
+```math
+g(w^n) = \frac{z(w^{n}) - conj(z(w^{-n})))}{2i}
+```
+```math
 ```
 
 # Resources
