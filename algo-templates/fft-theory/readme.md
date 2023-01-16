@@ -68,13 +68,30 @@ Proof:
  w^{-n} = cos(2*pi*n / N) - i*sin(2*pi*n /N) 
 ```
 
-## The trick (todo)
-
-
-
-
+## Restoring $f(w^n)$ from $z(w^n)$
 ```math
-
+z(w^{-n}) = f(w^{-n}) + i*g(w^{-n})
+```
+```math
+conj(z(w^{-n})) = conj(f(w^{-n})) + conj(i*g(w^{-n}))
+```
+```math
+conj(z(w^{-n})) = conj(f(w^{-n})) - i * conj(g(w^{-n}))
+```
+```math
+conj(z(w^{-n})) = f(conj(w^{-n}))) - i * g(conj(w^{-n}))
+```
+```math
+conj(z(w^{-n})) = f(w^n) - i * g(w^n)
+```
+```math
+f(w^n) = conj(z(w^{-n})) + i * g(w^n)
+```
+```math
+f(w^n) = conj(z(w^{-n})) + (z(w^n) - f(w^n))
+```
+```math
+f(w^n) = \frac{(conj(z(w^{-n})) + (z(w^n))}{2}
 ```
 
 # Resources
