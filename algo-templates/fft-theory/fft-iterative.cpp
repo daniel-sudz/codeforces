@@ -3,15 +3,23 @@
 #define endl '\n'
 #define mp make_pair
 #define pb push_back
+#define cd complex<double> 
 using namespace std;
 #define ui unsigned int
 # define fastio ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
 
 
-//polyfill std::bit_width for SPOJ
+// polyfill std::bit_width for SPOJ
 ui bit_width(ui x) {
     int res = 1;
     while(x>>=1) res++;
+    return res;
+}
+
+// polyfill std::bit_ceil for SPOJ
+ui bit_ceil(ui x) {
+    int res = 1; 
+    while(res < x) res *= 2; 
     return res;
 }
 
@@ -54,6 +62,21 @@ template<typename T> void fft(vector<T>& arr, const bool inv = false) {
     }
 }
 
+template<typename T> vector<T> convolute(vector<T>& a, vector<T>& b) {
+    if(a.size() > b.size()) swap(a,b); 
+    for(int i=0;i<a.size();i++) b[i] += T(0,a[i].real());
+    b.resize(bit_ceil(a.size()+b.size()));
+    fft(b,false);
+    vector<T> c(b.size()); 
+    for(int i=0;i<c.size();i++) {
+        T zn = b[i]; 
+        T conj_inv = conj(b[(c.size()-i)%c.size()]);
+        c[i] = ((zn + conj_inv)/T(2,0)) * ((zn - conj_inv)/T(0,2));
+    }
+    fft(c,true);
+    return c;
+}
+
 int main() {
     //fastio;
     int T;cin>>T;
@@ -65,14 +88,7 @@ int main() {
         for(int i=0;i<=N;i++) cin>>p2[i];
         reverse(p1.begin(),p1.end());
         reverse(p2.begin(),p2.end());
-        int exp=1;
-        while(exp < p1.size()+p2.size()) exp*=2;
-        p1.resize(exp);
-        p2.resize(exp);
-        fft(p1);
-        fft(p2);
-        for(int i=0;i<p1.size();i++) p1[i] *= p2[i];
-        fft(p1,true);
+        p1 = convolute(p1,p2);
         while(p1.size() > 2*N+1) p1.pop_back(); 
         reverse(p1.begin(),p1.end());
         for(auto v: p1) cout<<(long long)round(v.real())<<" ";
