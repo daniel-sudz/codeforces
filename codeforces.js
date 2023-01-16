@@ -11,6 +11,8 @@ let macro_defines = [
 ]
 
 let typedefs = {
+    "cd":       "complex<double>",
+    "cld":      "complex<long double>",
     "ui":       "unsigned int",
     "ull":      "unsigned long long",
     "ll":       "long long",
