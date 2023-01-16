@@ -1,3 +1,7 @@
+# Jump links
+[2-in-one complex convolution trick](readme.md#2-in-one-trick)
+
+
 # Note
 Iterative version much more annoying to type out from scratch without mistakes. But constant is significantly lower so in practice you would always use it.
 
