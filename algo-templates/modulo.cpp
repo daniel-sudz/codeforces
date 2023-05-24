@@ -17,5 +17,5 @@ ll exp(ll base, ll exp, ll MOD) {
 }
 
 ll divmod(ll num, ll denom, ll MOD) {
-    return (num * exp(denom, MOD-2, MOD)) % MOD;
+    return (((num%MOD)+MOD)%MOD * ((exp(denom, MOD-2, MOD)%MOD)+MOD)%MOD) % MOD;
 }
