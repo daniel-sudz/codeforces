@@ -14,5 +14,5 @@ bounded by x < lcm(p1,p2,p3,p4...)
 2) Graham Sweep (O(NlogN)) N=points
 
 # Randomized 
-1) Locality sensitive fashing (h-function bucketing on strings) 
+1) Locality sensitive hashing (h-function bucketing on strings) 
 2) Bloom Filter
