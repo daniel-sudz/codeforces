@@ -25,6 +25,7 @@ let contests = await fetchretryjson(
   "https://codeforces.com/api/contest.list?gym=false"
 );
 
+
 // sort contests by most recent
 contests["result"].sort(
   (a, b) => b["startTimeSeconds"] - a["startTimeSeconds"]
@@ -43,14 +44,19 @@ for (let contest of contests["result"]) {
     );
 
     let solved_problem = false;
-    for (let submission of myresults["result"]) {
-      let problem = submission["problem"]["index"];
-      let verdict = submission["verdict"];
+    if(myresults["status"] != "FAILED") {
+      for (let submission of myresults["result"]) {
+	 let problem = submission["problem"]["index"];
+	 let verdict = submission["verdict"];
 
-      if (problem == PROBLEM_WANTED && verdict == "OK") {
-        solved_problem = true;
-        break;
-      }
+	 if (problem == PROBLEM_WANTED && verdict == "OK") {
+           solved_problem = true;
+	   break;
+	 }
+       }
+    }
+    else {
+      solved_problem = true;
     }
     if (!solved_problem) {
       let contest_url = `https://codeforces.com/contest/${contest_id}/problem/${PROBLEM_WANTED}`;
